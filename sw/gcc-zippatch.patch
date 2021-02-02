@@ -162,7 +162,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/configure.ac gcc-6.2.0-zip/configure.ac
  # If we aren't building newlib, then don't build libgloss, since libgloss
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/cfgexpand.c gcc-6.2.0-zip/gcc/cfgexpand.c
 --- gcc-6.2.0/gcc/cfgexpand.c	2016-04-27 08:23:50.000000000 -0400
-+++ gcc-6.2.0-zip/gcc/cfgexpand.c	2018-06-05 21:18:19.438798488 -0400
++++ gcc-6.2.0-zip/gcc/cfgexpand.c	2019-08-13 22:57:52.600850709 -0400
 @@ -74,6 +74,16 @@
  #include "tree-chkp.h"
  #include "rtl-chkp.h"
@@ -247,7 +247,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/combine.c gcc-6.2.0-zip/gcc/combine.c
  #endif
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/common/config/zip/zip-common.c gcc-6.2.0-zip/gcc/common/config/zip/zip-common.c
 --- gcc-6.2.0/gcc/common/config/zip/zip-common.c	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/common/config/zip/zip-common.c	2017-01-11 09:41:34.483106099 -0500
++++ gcc-6.2.0-zip/gcc/common/config/zip/zip-common.c	2020-01-23 15:59:07.522938668 -0500
 @@ -0,0 +1,52 @@
 +////////////////////////////////////////////////////////////////////////////////
 +//
@@ -262,7 +262,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/common/config/zip/zip-common.c gcc-6.
 +//
 +////////////////////////////////////////////////////////////////////////////////
 +//
-+// Copyright (C) 2016-2017, Gisselquist Technology, LLC
++// Copyright (C) 2016-2020, Gisselquist Technology, LLC
 +//
 +// This program is free software (firmware): you can redistribute it and/or
 +// modify it under the terms of  the GNU General Public License as published
@@ -301,216 +301,10 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/common/config/zip/zip-common.c gcc-6.
 +#define	TARGET_OPTION_OPTIMIZATION_TABLE	zip_option_optimization_table
 +
 +struct gcc_targetm_common	targetm_common = TARGETM_COMMON_INITIALIZER;
-diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/genzipops gcc-6.2.0-zip/gcc/config/zip/genzipops
---- gcc-6.2.0/gcc/config/zip/genzipops	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/genzipops	2018-03-22 18:33:09.823726748 -0400
-@@ -0,0 +1,201 @@
-+ELF          >     @     @       €N          @ 8 	 @         @       @ @     @ @     ø      ø                   8      8@     8@                                          @       @     ô9      ô9                    >      >`     >`     ˜      À                    (>      (>`     (>`     Ğ      Ğ                   T      T@     T@     D       D              Påtd   Ä6      Ä6@     Ä6@     œ       œ              Qåtd                                                  Råtd   >      >`     >`     ğ      ğ             /lib64/ld-linux-x86-64.so.2          GNU                        GNU Á•F3m›ö+•Z\Lè=à–ö<                         9ò‹                            4                                            B                      ;                      #                      t                      m                      ^                      †                       f                                            W                                                                  P                      I     À@`             libc.so.6 exit sprintf fopen puts __stack_chk_fail unlink strlen fclose stderr fwrite rename fprintf access strcmp __libc_start_main __gmon_start__ GLIBC_2.4 GLIBC_2.2.5                                   ii   •      ui	   Ÿ       ø?`        	           À@`                   @`                    @`                   (@`                   0@`                   8@`                   @@`                   H@`                   P@`                   X@`        
-+           `@`                   h@`                   p@`                   x@`                   €@`                   HƒìH‹9  H…Àtè  HƒÄÃ              ÿ59  ÿ%9  @ ÿ%9  h    éàÿÿÿÿ%ú8  h   éĞÿÿÿÿ%ò8  h   éÀÿÿÿÿ%ê8  h   é°ÿÿÿÿ%â8  h   é ÿÿÿÿ%Ú8  h   éÿÿÿÿ%Ò8  h   é€ÿÿÿÿ%Ê8  h   épÿÿÿÿ%Â8  h   é`ÿÿÿÿ%º8  h	   éPÿÿÿÿ%²8  h
-+   é@ÿÿÿÿ%ª8  h   é0ÿÿÿÿ%¢8  h   é ÿÿÿÿ%š8  h   éÿÿÿÿ%8  f        1íI‰Ñ^H‰âHƒäğPTIÇÀğ@ HÇÁ€@ HÇÇ>@ è7ÿÿÿôfD  ¸¯@` UH-¨@` HƒøH‰åv¸    H…Àt]¿¨@` ÿàf„     ]Ã@ f.„     ¾¨@` UHî¨@` HÁşH‰åH‰ğHÁè?HÆHÑşt¸    H…Àt]¿¨@` ÿà ]ÃfD  €=8   uUH‰åènÿÿÿ]Æş7  óÃ@ ¿ >` Hƒ? uë“ ¸    H…ÀtñUH‰åÿĞ]ézÿÿÿUH‰åHƒìH‰}øH‹EøH‰Áº¸  ¾   ¿@ èÃşÿÿÉÃUH‰åHƒìH‰}øH‰uğH‹UğH‹Eø¾Á @ H‰Ç¸    è6şÿÿÉÃUH‰åHƒì0H‰}øH‰uğH‰UèH‰MàL‰EØL‰MĞH‹}èH‹uĞH‹MĞH‹UğH‹EøHƒìÿuÿuØÿuàI‰ùI‰ğ¾Ğ @ H‰Ç¸    èÚıÿÿHƒÄ ÉÃUH‰åHìĞ   H‰½hÿÿÿH‰µ`ÿÿÿH‰•XÿÿÿH‰PÿÿÿL‰…HÿÿÿL‰@ÿÿÿH‹EH‰…8ÿÿÿdH‹%(   H‰Eø1ÀH‹•8ÿÿÿH…pÿÿÿ¾³!@ H‰Ç¸    è¤ıÿÿH‹•8ÿÿÿH‹…hÿÿÿ¾È!@ H‰Ç¸    èDıÿÿH‹½8ÿÿÿH‹µPÿÿÿH‹XÿÿÿH‹•`ÿÿÿH‹…hÿÿÿHƒìÿµ`ÿÿÿI‰ùI‰ğ¾ğ!@ H‰Ç¸    èÿüÿÿHƒÄH‹½8ÿÿÿH‹µPÿÿÿH‹@ÿÿÿH‹•`ÿÿÿH‹…hÿÿÿHƒìÿµ`ÿÿÿI‰ùI‰ğ¾€"@ H‰Ç¸    è¶üÿÿHƒÄH‹½8ÿÿÿH‹PÿÿÿH‹•@ÿÿÿH‹µ`ÿÿÿH‹…hÿÿÿHƒìh?#@ A¹<#@ I‰øH‰ÇèBşÿÿHƒÄH‹½8ÿÿÿH‹PÿÿÿH‹•@ÿÿÿH‹µ`ÿÿÿH‹…hÿÿÿHƒìhD#@ A¹A#@ I‰øH‰ÇèşÿÿHƒÄH‹½8ÿÿÿH‹PÿÿÿH‹•@ÿÿÿH‹µ`ÿÿÿH‹…hÿÿÿHƒìhJ#@ A¹G#@ I‰øH‰ÇèÀıÿÿHƒÄH‹½8ÿÿÿH‹PÿÿÿH‹•@ÿÿÿH‹µ`ÿÿÿH‹…hÿÿÿHƒìhP#@ A¹M#@ I‰øH‰ÇèıÿÿHƒÄH‹½8ÿÿÿH‹PÿÿÿH‹•@ÿÿÿH‹µ`ÿÿÿH‹…hÿÿÿHƒìhW#@ A¹S#@ I‰øH‰Çè>ıÿÿHƒÄH‹½8ÿÿÿH‹PÿÿÿH‹•@ÿÿÿH‹µ`ÿÿÿH‹…hÿÿÿHƒìh]#@ A¹Y#@ I‰øH‰ÇèıüÿÿHƒÄH‹EødH3%(   tèçúÿÿÉÃUH‰åHì€  H‰½¨ùÿÿH‰µ ùÿÿH‰•˜ùÿÿH‰ùÿÿL‰…ˆùÿÿdH‹%(   H‰Eø1ÀH‹•˜ùÿÿH…ğùÿÿ¾`#@ H‰Ç¸    èøúÿÿH‹•˜ùÿÿH…ğûÿÿ¾ $@ H‰Ç¸    èØúÿÿH‹•˜ùÿÿH…ğıÿÿ¾8$@ H‰Ç¸    è¸úÿÿL…ğıÿÿH½ğûÿÿH‹ùÿÿH•ğùÿÿH‹µ ùÿÿH‹…¨ùÿÿHƒìÿµˆùÿÿM‰ÁI‰øH‰ÇècüÿÿHƒÄH‹•˜ùÿÿH…ğùÿÿ¾¸$@ H‰Ç¸    èRúÿÿH‹•˜ùÿÿH…ğûÿÿ¾ˆ%@ H‰Ç¸    è2úÿÿH‹•˜ùÿÿH…ğıÿÿ¾Ø%@ H‰Ç¸    èúÿÿH‹• ùÿÿH…°ùÿÿ¾Š&@ H‰Ç¸    èòùÿÿL…ğıÿÿH½ğûÿÿH‹ùÿÿH•ğùÿÿHµ°ùÿÿH‹…¨ùÿÿHƒìÿµˆùÿÿM‰ÁI‰øH‰ÇèûÿÿHƒÄH‹EødH3%(   tè'ùÿÿÉÃUH‰åHƒì H‰}øH‰uğH‰UèH‰MàH‹}àH‹uèH‹MèH‹UğH‹EøHƒìÿuàÿuàÿuàI‰ùI‰ğ¾˜&@ H‰Ç¸    èùÿÿHƒÄ ÉÃUH‰åHƒì H‰}øH‰uğH‰UèH‰MàH‹}àH‹uèH‹MèH‹UğH‹EøI‰ùI‰ğ¾(@ H‰Ç¸    è¹øÿÿÉÃUH‰åHƒì H‰}øH‰uğH‰UèH‰MàH‹}àH‹uèH‹MèH‹UğH‹EøI‰ùI‰ğ¾`)@ H‰Ç¸    èrøÿÿÉÃUH‰åHƒì H‰}øH‰uğH‰UèH‰MàH‹}àH‹uèH‹MèH‹UğH‹EøI‰ùI‰ğ¾ˆ*@ H‰Ç¸    è+øÿÿÉÃUH‰åHƒì H‰}øH‰uğH‰UèH‰MàH‹}àH‹uèH‹MèH‹UğH‹EøI‰ùI‰ğ¾˜+@ H‰Ç¸    èä÷ÿÿÉÃUH‰åHƒì H‰}øH‰uğH‰UèH‰MàH‹}àH‹uèH‹MèH‹UğH‹EøI‰ùI‰ğ¾à,@ H‰Ç¸    è÷ÿÿÉÃUH‰åHƒì H‰}øH‰uğH‰UèH‰MàH‹}àH‹uèH‹MèH‹UğH‹EøI‰ùI‰ğ¾(.@ H‰Ç¸    èV÷ÿÿÉÃUH‰å¿p/@ èåöÿÿ]ÃUH‰åAUATSHƒì(‰}ÌH‰uÀH‹?0  ¾²/@ H‰Çè:÷ÿÿH‰EØH‹/0  H‰EĞƒ}Ì~!H‹EÀHƒÀH‹ ¶ <-uè›ÿÿÿ¿   è4÷ÿÿƒ}Ì´   H‹EÀHƒÀH‹ H‰Çè‡öÿÿH‰ÃH‹İ/  H‰ÇèuöÿÿH9Ãr~H‹É/  H‹EÀHƒÀL‹ H‹EÀHƒÀH‹ H‰ÇèKöÿÿI‰ÅH‹¡/  H‰Çè9öÿÿI)ÅL‰èLàH‰ŞH‰ÇèUöÿÿ…Àu/H‹EÀHƒÀH‹ ¾    H‰ÇèYöÿÿ…ÀuH‹EÀHƒÀH‹ H‰ÇèÂõÿÿH‹EÀH‹@H‰EĞH‹EØH‰Çè÷ÿÿH‹EØA¸´/@ ¹¸/@ º¹/@ ¾Á/@ H‰ÇèäúÿÿH‹EØA¸È/@ ¹¸/@ ºÌ/@ ¾Õ/@ H‰ÇèÃúÿÿH‹EØA¸Ü/@ ¹¸/@ ºà/@ ¾è/@ H‰Çè¢úÿÿH‹EØA¸ï/@ ¹ô/@ º0@ ¾0@ H‰ÇèúÿÿH‹EØA¸0@ ¹ô/@ º0@ ¾0@ H‰Çè`úÿÿH‹EØA¸$0@ ¹¸/@ º(0@ ¾/0@ H‰Çè?úÿÿH‹EØA¸60@ ¹¸/@ º90@ ¾@0@ H‰ÇèúÿÿH‹EØA¸G0@ ¹¸/@ ºK0@ ¾R0@ H‰ÇèıùÿÿH‹EØA¸Y0@ ¹¸/@ º]0@ ¾i0@ H‰ÇèÜùÿÿH‹EØA¸q0@ ¹¸/@ ºu0@ ¾0@ H‰Çè»ùÿÿH‹EØA¸‡0@ ¹¸/@ º‹0@ ¾—0@ H‰ÇèšùÿÿH‹EØHƒìh3@ A¹ 0@ A¸x1@ ¹
-+2@ º2@ ¾3@ H‰Çè¬öÿÿHƒÄH‹EØHƒìh5@ A¹ 3@ A¸ø3@ ¹
-+2@ º4@ ¾5@ H‰ÇèxöÿÿHƒÄH‹EØ¾–5@ H‰ÇèÖõÿÿH‹EØ¹?#@ º<#@ ¾´5@ H‰ÇèÆúÿÿH‹EØ¹D#@ ºA#@ ¾´5@ H‰Çè«úÿÿH‹EØ¹J#@ ºG#@ ¾´5@ H‰ÇèúÿÿH‹EØ¹P#@ ºM#@ ¾´5@ H‰ÇèuúÿÿH‹EØ¹W#@ ºS#@ ¾´5@ H‰ÇèZúÿÿH‹EØ¹]#@ ºY#@ ¾´5@ H‰Çè?úÿÿH‹EØ¾¹5@ H‰Çè#õÿÿH‹EØ¹?#@ º<#@ ¾Ö5@ H‰ÇèkúÿÿH‹EØ¹D#@ ºA#@ ¾Ö5@ H‰ÇèPúÿÿH‹EØ¹J#@ ºG#@ ¾Ö5@ H‰Çè5úÿÿH‹EØ¹P#@ ºM#@ ¾Ö5@ H‰ÇèúÿÿH‹EØ¹W#@ ºS#@ ¾Ö5@ H‰ÇèÿùÿÿH‹EØ¹]#@ ºY#@ ¾Ö5@ H‰ÇèäùÿÿH‹EØ¾à5@ H‰ÇèpôÿÿH‹EØ¹?#@ º<#@ ¾ 6@ H‰ÇèFúÿÿH‹EØ¹D#@ ºA#@ ¾ 6@ H‰Çè+úÿÿH‹EØ¹J#@ ºG#@ ¾ 6@ H‰ÇèúÿÿH‹EØ¹P#@ ºM#@ ¾ 6@ H‰ÇèõùÿÿH‹EØ¹W#@ ºS#@ ¾ 6@ H‰ÇèÚùÿÿH‹EØ¹]#@ ºY#@ ¾ 6@ H‰Çè¿ùÿÿH‹EØ¾6@ H‰Çè½óÿÿH‹EØ¹?#@ º<#@ ¾"6@ H‰ÇèLùÿÿH‹EØ¹D#@ ºA#@ ¾"6@ H‰Çè1ùÿÿH‹EØ¹J#@ ºG#@ ¾"6@ H‰ÇèùÿÿH‹EØ¹P#@ ºM#@ ¾"6@ H‰ÇèûøÿÿH‹EØ¹W#@ ºS#@ ¾"6@ H‰ÇèàøÿÿH‹EØ¹]#@ ºY#@ ¾"6@ H‰ÇèÅøÿÿH‹EØ¾'6@ H‰Çè
-+óÿÿH‹EØ¹?#@ º<#@ ¾D6@ H‰Çè'ùÿÿH‹EØ¹D#@ ºA#@ ¾D6@ H‰ÇèùÿÿH‹EØ¹J#@ ºG#@ ¾D6@ H‰ÇèñøÿÿH‹EØ¹P#@ ºM#@ ¾D6@ H‰ÇèÖøÿÿH‹EØ¹W#@ ºS#@ ¾D6@ H‰Çè»øÿÿH‹EØ¹]#@ ºY#@ ¾D6@ H‰Çè øÿÿH‹EØ¾I6@ H‰ÇèWòÿÿH‹EØ¹?#@ º<#@ ¾f6@ H‰Çè»øÿÿH‹EØ¹D#@ ºA#@ ¾f6@ H‰Çè øÿÿH‹EØ¹J#@ ºG#@ ¾f6@ H‰Çè…øÿÿH‹EØ¹P#@ ºM#@ ¾f6@ H‰ÇèjøÿÿH‹EØ¹W#@ ºS#@ ¾f6@ H‰ÇèOøÿÿH‹EØ¹]#@ ºY#@ ¾f6@ H‰Çè4øÿÿH‹EØ¾k6@ H‰Çè¤ñÿÿH‹EØ¹?#@ º<#@ ¾ˆ6@ H‰ÇèOøÿÿH‹EØ¹D#@ ºA#@ ¾ˆ6@ H‰Çè4øÿÿH‹EØ¹J#@ ºG#@ ¾ˆ6@ H‰ÇèøÿÿH‹EØ¹P#@ ºM#@ ¾ˆ6@ H‰Çèş÷ÿÿH‹EØ¹W#@ ºS#@ ¾ˆ6@ H‰Çèã÷ÿÿH‹EØ¹]#@ ºY#@ ¾ˆ6@ H‰ÇèÈ÷ÿÿH‹EØH‰ÇèïÿÿH‹g(  H‹UĞH‰ÖH‰Çèpïÿÿ…Àt.H‹M(  H‹n(  H‹UĞ¾6@ H‰Ç¸    èïÿÿ¿   è^ïÿÿ¿    èTïÿÿ@ AWAVA‰ÿAUATL%~%  UH-~%  SI‰öI‰ÕL)åHƒìHÁıè'îÿÿH…ít 1Û„     L‰êL‰öD‰ÿAÿÜHƒÃH9ëuêHƒÄ[]A\A]A^A_Ãf.„     óÃ  HƒìHƒÄÃ         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-+;;
-+;; Filename:	zip-ops.md
-+;;
-+;; Project:	Zip CPU -- a small, lightweight, RISC CPU soft core
-+;;
-+;; Purpose:	This is a computer generated machine description of the
-+;;		ZipCPU's operations.  It is computer generated simply for
-+;;	two reasons.  First, I can't seem to find a way to generate this
-+;;	information within GCC's current constructs.  Specifically, the
-+;;	CPU's instructions normally set the condition codes, unless they
-+;;	are conditional instructions when they don't.  Second, the ZipCPU is
-+;;	actually quite regular.  Almost all of the instructions have the same
-+;;	form.  This form turns into many, many RTL instructions.  Because the
-+;;	CPU doesn't match any of the others within GCC, that means either
-+;;	I have a *lot* of cut, copy, paste, and edit to do to create the file
-+;;	and upon any and every edit, or I need to build a program to generate
-+;;	the remaining .md constructs.  Hence, I chose the latter to minimize
-+;;	the amount of work I needed to do.
-+;;
-+;;
-+;; Creator:	Dan Gisselquist, Ph.D.
-+;;		Gisselquist Technology, LLC
-+;;
-+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-+;;
-+;; Copyright (C) 2017, Gisselquist Technology, LLC
-+;;
-+;; This program is free software (firmware): you can redistribute it and/or
-+;; modify it under the terms of  the GNU General Public License as published
-+;; by the Free Software Foundation, either version 3 of the License, or (at
-+;; your option) any later version.
-+;;
-+;; This program is distributed in the hope that it will be useful, but WITHOUT
-+;; ANY WARRANTY; without even the implied warranty of MERCHANTIBILITY or
-+;; FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-+;; for more details.
-+;;
-+;; License:	GPL, v3, as defined and found on www.gnu.org,
-+;;		http://www.gnu.org/licenses/gpl.html
-+;;
-+;;
-+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-+;;
-+;;
-+ ;
-+;
-+; %s
-+;
-+;
-+  (define_insn "%s_%s"
-+	[(cond_exec (%s (reg:CC CC_REG) (const_int 0))
-+			%s)]
-+	"%s"	; Condition
-+	"%s.%s\t%%1,%%0	; genzip, conditional operator"	; Template
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
-+;
-+;
-+ %s (genzipop_long)   ;
-+;
-+;
-+; %s (genzipop_long)
-+;
-+;
-+;
-+       (define_insn "%s"
-+	[%s
-+	(clobber (reg:CC CC_REG))]
-+	"%s"
-+	"%s\t%%2,%%0	; %s"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
-+;
-+;
-+  (define_insn "%s_raw"
-+	[%s
-+	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
-+	"%s"
-+	"%s\t%%1,%%0	; %s_raw"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
-+;
-+;
-+ eq Z ne NZ lt LT ge GE ltu C geu NC (set (match_operand:SI 0 "register_operand" "=r")
-+		(%s (match_operand:SI 1 "register_operand" "0")
-+			(match_operand:SI 2 "zip_opb_single_operand_p" "rO")))   (set (match_dup 0) (%s (match_dup 0) (match_dup 2)))    (set (match_operand:SI 0 "register_operand" "=r")
-+		(%s (match_dup 0)
-+			(match_operand:SI 1 "zip_opb_single_operand_p" "rO"))) (set (match_operand:SI 0 "register_operand" "=r")
-+		(%s (match_operand:SI 1 "register_operand" "0")
-+			(plus:SI (match_operand:SI 2 "register_operand" "r")
-+				(match_operand:SI 3 "const_int_operand" "N")))) (set (match_dup 0) (%s (match_dup 0)
-+			(plus:SI (match_dup 2) (match_dup 3)))) (set (match_operand:SI 0 "register_operand" "=r")
-+		(%s (match_dup 0)
-+			(plus:SI (match_operand:SI 1 "register_operand" "r")
-+				(match_operand:SI 2 "const_int_operand" "N")))) %s_off        ;
-+;
-+(define_insn "%s_%s"
-+	[(set (match_operand:SI 0 "register_operand" "=r,r,r,Q")
-+		(if_then_else:SI (%s (reg:CC CC_REG) (const_int 0))
-+			(match_operand:SI 1 "general_operand" "r,Q,i,r")
-+			(match_dup 0)))]
-+	""
-+	"@
-+	MOV.%s	%%1,%%0	; cmov
-+	LW.%s	%%1,%%0	; cmov
-+	LDI.%s	%%1,%%0	; cmov
-+	SW.%s	%%1,%%0	; cmov"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
-+ ;
-+;
-+(define_insn "%s_%s"
-+	[(set (match_operand:SI 0 "register_operand" "=r")
-+		(if_then_else:SI (%s (reg:CC CC_REG) (const_int 0))
-+			(plus:SI (match_dup 0)
-+				(match_operand:SI 1 "zip_opb_single_operand_p" "rO"))
-+			(match_dup 0)))]
-+	""
-+	"ADD.%s	%%1,%%0	; cadd"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
-+     ;
-+;
-+(define_insn "%s_%s"
-+	[(set (match_operand:SI 0 "register_operand" "=r")
-+		(if_then_else:SI (%s (reg:CC CC_REG) (const_int 0))
-+			(xor:SI (match_dup 0)
-+				(const_int -1))
-+			(match_dup 0)))]
-+	""
-+	"NOT.%s	%%0	; cnot"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
-+        ;
-+;
-+(define_insn "%s_%s"
-+	[(set (match_operand:SI 0 "register_operand" "+r")
-+		(if_then_else:SI (%s (reg:CC CC_REG) (const_int 0))
-+			(neg:SI (match_dup 0))
-+			(match_dup 0)))]
-+	""
-+	"NEG.%s	%%0	; cneg"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
-+   ;
-+;
-+(define_insn "%s_%s"
-+	[(set (match_operand:SI 0 "register_operand" "+r")
-+		(if_then_else:SI (%s (reg:CC CC_REG) (const_int 0))
-+			(and:SI (match_dup 0) (match_operand:SI 1 "zip_opb_single_operand_p" "rO"))
-+			(match_dup 0)))]
-+	""
-+	"AND.%s	%%1,%%0	; cand"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
-+  ;
-+;
-+(define_insn "%s_%s"
-+	[(set (match_operand:SI 0 "register_operand" "+r")
-+		(if_then_else:SI (%s (reg:CC CC_REG) (const_int 0))
-+			(ior:SI (match_dup 0) (match_operand:SI 1 "zip_opb_single_operand_p" "rO"))
-+			(match_dup 0)))]
-+	""
-+	"OR.%s	%%1,%%0	; cior"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
-+   ;
-+;
-+(define_insn "%s_%s"
-+	[(set (match_operand:SI 0 "register_operand" "+r")
-+		(if_then_else:SI (%s (reg:CC CC_REG) (const_int 0))
-+			(xor:SI (match_dup 0) (match_operand:SI 1 "zip_opb_single_operand_p" "rO"))
-+			(match_dup 0)))]
-+	""
-+	"XOR.%s	%%1,%%0	; cxor"
-+	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
-+  USAGE: genzipops <new-zip-ops.md filename> .zip-ops.md zip-ops.md w ADD  plus:SI addsi3 SUB minus:SI subsi3 MPY mult:SI mulsi3 DIVS (ZIP_DIVIDE) div:SI divsi3 DIVU udiv:SI udivsi3 AND and:SI andsi3 OR ior:SI iorsi3 XOR xor:SI xorsi3 ASR ashiftrt:SI ashrsi3 LSL ashift:SI ashlsi3 LSR lshiftrt:SI lshrsi3  (set (match_operand:SI 0 "register_operand" "=r")
-+		(truncate:SI (ashiftrt:DI (mult:DI
-+			(sign_extend:DI (match_dup 0))
-+			(sign_extend:DI (match_operand:SI 1 "zip_opb_operand_p" "rO")))
-+			(const_int 32))))        (set (match_dup 0)
-+		(truncate:SI (ashiftrt:DI (mult:DI
-+			(sign_extend:DI (match_dup 1))
-+			(sign_extend:DI (match_dup 2)))
-+			(const_int 32)))) (ZIP_HAS_DI)  (set (match_operand:SI 0 "register_operand" "=r")
-+		(truncate:SI (ashiftrt:DI (mult:DI
-+			(sign_extend:DI (match_operand:SI 1 "register_operand" "0"))
-+			(sign_extend:DI (match_operand:SI 2 "zip_opb_operand_p" "rO")))
-+			(const_int 32)))) smulsi_highpart MPYSHI   (set (match_operand:SI 0 "register_operand" "=r")
-+		(truncate:SI (ashiftrt:DI (mult:DI
-+			(zero_extend:DI (match_dup 0))
-+			(zero_extend:DI (match_operand:SI 1 "zip_opb_operand_p" "rO")))
-+			(const_int 32))))        (set (match_dup 0)
-+		(truncate:SI (ashiftrt:DI (mult:DI
-+			(zero_extend:DI (match_dup 1))
-+			(zero_extend:DI (match_dup 2)))
-+			(const_int 32))))       (set (match_operand:SI 0 "register_operand" "=r")
-+		(truncate:SI (ashiftrt:DI (mult:DI
-+			(zero_extend:DI (match_operand:SI 1 "register_operand" "0"))
-+			(zero_extend:DI (match_operand:SI 2 "zip_opb_operand_p" "rO")))
-+			(const_int 32)))) umulsi_highpart MPYUHI Conditional move instructions cmov Conditional add instructions cadd      Conditional negate instructions cneg Conditional not instructions cnot Conditional and instructions cand Conditional ior instructions cior Conditional xor instructions cxor    ERR: Could not create %s, leaving results in %s
-+    ;˜      <Ğÿÿä   <Ñÿÿ´   2Òÿÿ  \Òÿÿ,  ‰ÒÿÿL  éÒÿÿl  §ÕÿÿŒ  g×ÿÿ¬  ¿×ÿÿÌ  Øÿÿì  MØÿÿ  ”Øÿÿ,  ÛØÿÿL  "Ùÿÿl  iÙÿÿŒ  zÙÿÿ¬  ¼áÿÿÌ  ,âÿÿ         zR x      €Ğÿÿ*                  zR x  $      PÏÿÿğ    FJw€ ?;*3$"       D   Ñÿÿ*    A†Ce      d   (Ñÿÿ-    A†Ch      „   5Ñÿÿ`    A†C[     ¤   uÑÿÿ¾   A†C¹    Ä   ÔÿÿÀ   A†C»    ä   ³ÕÿÿX    A†CS       ëÕÿÿG    A†CB     $  ÖÿÿG    A†CB     D  9ÖÿÿG    A†CB     d  `ÖÿÿG    A†CB     „  ‡ÖÿÿG    A†CB     ¤  ®ÖÿÿG    A†CB     Ä  ÕÖÿÿ    A†CL      ä  ÆÖÿÿ>   A†CIŒƒD     èŞÿÿe    BBE B(ŒH0†H8ƒM@r8A0A(B BBB    L  ßÿÿ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Ğ@     °@                                  Ø@            ô@            >`                          >`                   õşÿo    ˜@            X@            À@     
-+       «                                            @`            P                           ˆ@            X@            0       	              şÿÿo    (@     ÿÿÿo           ğÿÿo    @                                                                                                             (>`                     @     &@     6@     F@     V@     f@     v@     †@     –@     ¦@     ¶@     Æ@     Ö@     æ@                     ›/@     §/@     GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.9) 5.4.0 20160609                                   8@                   T@                   t@                   ˜@                   À@                   X@                   @                   (@                  	 X@                  
-+ ˆ@                   Ø@                    @                   ğ@                    @                   ô@                    @                   Ä6@                   `7@                   >`                   >`                    >`                   (>`                   ø?`                    @`                   ˆ@`                   À@`                                       ñÿ                      >`                  0@                  p@             .     °@             D     È@`            S     >`             z     Ğ@             †     >`             ¥    ñÿ                    ñÿ                ±     ğ9@             ¿      >`                  ñÿ                Ë      >`             Ü     (>`             å      >`             ø      Ä6@                  @`             !    ğ@            1    Ÿ@     G       9                     M                      -     ˆ@`             i    +@     X       q                     ƒ     @`            Œ    k@     À      •    M	@     `       £    ˜@`            «    ¨@`             ²                     +    ô@             Æ                     Ú                     ö    ­	@     ¾          Ê@     G                            +    ˆ@`             8                     L    X@     G       T                     i                      x   @`             …     @            ”    €@     e       ×     Ğ@`             ¤     	@     -       1     @     *       °    æ@     G       ¸    ƒ@     G       À    ¨@`             Ì    >@     >      Ñ    -@            ×                     ë                     ş                                           &    ö@     *       ,                     A                     S                     g   ¨@`             s                          @     G           Ø@             •    À@`             crtstuff.c __JCR_LIST__ deregister_tm_clones __do_global_dtors_aux completed.7594 __do_global_dtors_aux_fini_array_entry frame_dummy __frame_dummy_init_array_entry genzipops.c __FRAME_END__ __JCR_END__ __init_array_end _DYNAMIC __init_array_start __GNU_EH_FRAME_HDR _GLOBAL_OFFSET_TABLE_ __libc_csu_fini gencior unlink@@GLIBC_2.2.5 _ITM_deregisterTMCloneTable gencmov puts@@GLIBC_2.2.5 TAILPATH genzipop genzip_condop TMPPATH _edata fclose@@GLIBC_2.2.5 strlen@@GLIBC_2.2.5 __stack_chk_fail@@GLIBC_2.4 genzipop_long gencnot __libc_start_main@@GLIBC_2.2.5 __data_start strcmp@@GLIBC_2.2.5 gencand fprintf@@GLIBC_2.2.5 __gmon_start__ __dso_handle _IO_stdin_used __libc_csu_init gen_heading gencxor gencadd __bss_start main usage access@@GLIBC_2.2.5 fopen@@GLIBC_2.2.5 _Jv_RegisterClasses rename@@GLIBC_2.2.5 legal sprintf@@GLIBC_2.2.5 exit@@GLIBC_2.2.5 fwrite@@GLIBC_2.2.5 __TMC_END__ _ITM_registerTMCloneTable gencneg stderr@@GLIBC_2.2.5  .symtab .strtab .shstrtab .interp .note.ABI-tag .note.gnu.build-id .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt .init .plt.got .text .fini .rodata .eh_frame_hdr .eh_frame .init_array .fini_array .jcr .dynamic .got.plt .data .bss .comment                                                                                 8@     8                                    #             T@     T                                     1             t@     t      $                              D   öÿÿo       ˜@     ˜      $                             N             À@     À      ˜                          V             X@     X      «                              ^   ÿÿÿo       @           "                            k   şÿÿo       (@     (      0                            z             X@     X      0                            „      B       ˆ@     ˆ      P                                       Ø@     Ø                                    ‰              @            ğ                             ”             ğ@     ğ                                                  @            ò                             £             ô@     ô      	                              ©              @            Á                             ±             Ä6@     Ä6      œ                              ¿             `7@     `7      ”                             É             >`     >                                    Õ             >`     >                                    á              >`      >                                    æ             (>`     (>      Ğ                           ˜             ø?`     ø?                                   ï              @`      @      ˆ                             ø             ˆ@`     ˆ@                                     ş             À@`     ¨@                                          0               ¨@      4                                                   qM                                                         à@      è         /                 	                      ÈI      ©                             
-\ No newline at end of file
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/genzipops.c gcc-6.2.0-zip/gcc/config/zip/genzipops.c
 --- gcc-6.2.0/gcc/config/zip/genzipops.c	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/genzipops.c	2017-03-07 12:03:59.062584503 -0500
-@@ -0,0 +1,444 @@
++++ gcc-6.2.0-zip/gcc/config/zip/genzipops.c	2020-03-04 23:00:12.689848023 -0500
+@@ -0,0 +1,474 @@
 +////////////////////////////////////////////////////////////////////////////////
 +//
 +// Filename:	genzipops.c
@@ -543,7 +337,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/genzipops.c gcc-6.2.0-zip/
 +//
 +////////////////////////////////////////////////////////////////////////////////
 +//
-+// Copyright (C) 2017, Gisselquist Technology, LLC
++// Copyright (C) 2017-2020, Gisselquist Technology, LLC
 +//
 +// This program is free software (firmware): you can redistribute it and/or
 +// modify it under the terms of  the GNU General Public License as published
@@ -600,7 +394,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/genzipops.c gcc-6.2.0-zip/
 +";;\n"
 +";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n"
 +";;\n"
-+";; Copyright (C) 2017, Gisselquist Technology, LLC\n"
++";; Copyright (C) 2017-2020, Gisselquist Technology, LLC\n"
 +";;\n"
 +";; This program is free software (firmware): you can redistribute it and/or\n"
 +";; modify it under the terms of  the GNU General Public License as published\n"
@@ -671,6 +465,36 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/genzipops.c gcc-6.2.0-zip/
 +	genzip_condop(fp, md_opname, dup_rtx, insn_cond, zip_op, "geu", "NC");
 +}
 +
++void	genzipop_long_offset(FILE *fp, const char *md_opname, const char *uncond_rtx, const char *insn_cond, const char *split_rtx, const char *dup_rtx, const char *zip_op) {
++	char	heading[128];
++	sprintf(heading, "%s (genzipop_long_offset)", zip_op);
++	fprintf(fp, ";\n;\n;\n; %s (genzipop_long_offset)\n;\n;\n;\n", zip_op);
++
++	fprintf(fp, "(define_insn \"%s\"\n"
++"\t[%s\n"
++"\t(clobber (reg:CC CC_REG))]\n"
++"\t\"%s\"\n"
++"\t\"%s\\t%%3+%%2,%%0\t; %s\"\n"
++"\t[(set_attr \"predicable\" \"no\") (set_attr \"ccresult\" \"set\")])\n;\n;\n",
++		md_opname, uncond_rtx, insn_cond, zip_op, md_opname);
++
++
++	fprintf(fp, "(define_insn \"%s_raw\"\n"
++"\t[%s\n"
++"\t(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]\n"
++"\t\"%s\"\n"
++"\t\"%s\\t%%2+%%1,%%0\t; %s_raw\"\n"
++"\t[(set_attr \"predicable\" \"no\") (set_attr \"ccresult\" \"set\")])\n;\n;\n",
++	md_opname, dup_rtx, insn_cond, zip_op, md_opname);
++
++	genzip_condop(fp, md_opname, dup_rtx, insn_cond, zip_op, "eq", "Z");
++	genzip_condop(fp, md_opname, dup_rtx, insn_cond, zip_op, "ne", "NZ");
++	genzip_condop(fp, md_opname, dup_rtx, insn_cond, zip_op, "lt", "LT");
++	genzip_condop(fp, md_opname, dup_rtx, insn_cond, zip_op, "ge", "GE");
++	genzip_condop(fp, md_opname, dup_rtx, insn_cond, zip_op, "ltu", "C");
++	genzip_condop(fp, md_opname, dup_rtx, insn_cond, zip_op, "geu", "NC");
++}
++
 +void	genzipop(FILE *fp, const char *md_opname, const char *rtx_name, const char *insn_cond, const char *zip_op) {
 +	char	rtxstr[512], splitstr[512], dupstr[512], altname[64];
 +
@@ -705,7 +529,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/genzipops.c gcc-6.2.0-zip/
 +
 +	sprintf(altname, "%s_off", md_opname);
 +
-+	genzipop_long(fp, altname, rtxstr, insn_cond, splitstr, dupstr, zip_op);
++	genzipop_long_offset(fp, altname, rtxstr, insn_cond, splitstr, dupstr, zip_op);
 +}
 +
 +void	gencmov(FILE *fp, const char *md_opname, const char *md_cond, const char *zip_cond) {
@@ -957,8 +781,8 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/genzipops.c gcc-6.2.0-zip/
 +}
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.c gcc-6.2.0-zip/gcc/config/zip/zip.c
 --- gcc-6.2.0/gcc/config/zip/zip.c	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip.c	2018-06-05 21:17:24.151098201 -0400
-@@ -0,0 +1,2711 @@
++++ gcc-6.2.0-zip/gcc/config/zip/zip.c	2020-01-23 15:56:34.804042734 -0500
+@@ -0,0 +1,2733 @@
 +////////////////////////////////////////////////////////////////////////////////
 +//
 +// Filename: 	zip.c
@@ -972,7 +796,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.c gcc-6.2.0-zip/gcc/co
 +//
 +////////////////////////////////////////////////////////////////////////////////
 +//
-+// Copyright (C) 2016-2017, Gisselquist Technology, LLC
++// Copyright (C) 2016-2020, Gisselquist Technology, LLC
 +//
 +// This program is free software (firmware): you can redistribute it and/or
 +// modify it under the terms of  the GNU General Public License as published
@@ -1037,6 +861,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.c gcc-6.2.0-zip/gcc/co
 +#include "emit-rtl.h"
 +#include "ifcvt.h"
 +#include "genrtl.h"
++#include "stor-layout.h"
 +
 +// #include "tmp_p.h"
 +#include "target.h"
@@ -1054,7 +879,10 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.c gcc-6.2.0-zip/gcc/co
 +
 +static void zip_function_arg_advance(cumulative_args_t ca, enum machine_mode mode,
 +		const_tree type, bool named);
-+static rtx zip_function_arg(cumulative_args_t ca, enum machine_mode mode, const_tree type, bool named);
++static rtx zip_function_value(const_tree ret_type ATTRIBUTE_UNUSED,
++			const_tree fn ATTRIBUTE_UNUSED, bool outgoing ATTRIBUTE_UNUSED);
++static rtx zip_function_arg(cumulative_args_t ca, enum machine_mode mode,
++			const_tree type, bool named);
 +
 +static	void	zip_asm_trampoline_template(FILE *);
 +static	void	zip_trampoline_init(rtx, tree, rtx);
@@ -2001,13 +1829,27 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.c gcc-6.2.0-zip/gcc/co
 +		gen_rtx_REG(mode, (*cum)+1);
 +}
 +
++static rtx
++zip_function_value(const_tree ret_type ATTRIBUTE_UNUSED,
++	const_tree fn ATTRIBUTE_UNUSED, bool outgoing ATTRIBUTE_UNUSED) {
++	machine_mode mode = TYPE_MODE(ret_type);
++	ATTRIBUTE_UNUSED	int	unsgn = 0;
++
++	PROMOTE_MODE(mode, unsgn, ret_type);
++	return gen_rtx_REG(mode, zip_R1);
++}
++
++bool
++zip_function_value_regno_p(unsigned regno) {
++	return (regno == zip_R1);
++}
++
 +/* DECL is the declaration of the function being targeted by the call, and EXP
 + * is the CALL_EXPR representing the call.
 + */
 +bool	zip_function_ok_for_sibcall(ATTRIBUTE_UNUSED tree decl, tree exp) {
 +	// calls.c already checks whether or not the parameter stack space
 +	// is identical, so ... let's hope this all works and find out.
-+
 +	//
 +	// Actually, this will fail:  If the sibling uses R5 to pass registers
 +	// in and we don't, then there will be no way to restore R5.  This is
@@ -2029,6 +1871,10 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.c gcc-6.2.0-zip/gcc/co
 +
 +	INIT_CUMULATIVE_ARGS(cum_v, NULL, NULL, 0,0);
 +	cum = pack_cumulative_args(&cum_v);
++
++	if (call_expr_nargs(exp) > 4)
++		return false;
++
 +	for (i=0; i<call_expr_nargs(exp); i++) {
 +
 +		parameter = CALL_EXPR_ARG(exp, i);
@@ -2069,8 +1915,8 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.c gcc-6.2.0-zip/gcc/co
 +		//	can be followed by func2(R1,.., up to R4)
 +		//	
 +		if (REG_P(parm_rtx)&&(REGNO(parm_rtx))
-+				&&(REGNO(parm_rtx)<sizeof(zip_call_used_register))
-+				&&(!zip_call_used_register[REGNO(parm_rtx)]))
++				&&((REGNO(parm_rtx)>=sizeof(zip_call_used_register))
++				||(!zip_call_used_register[REGNO(parm_rtx)])))
 +			return false;
 +	}
 +
@@ -3684,8 +3530,8 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zipdbg.h gcc-6.2.0-zip/gcc
 +#endif
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gcc/config/zip/zip-di.md
 --- gcc-6.2.0/gcc/config/zip/zip-di.md	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip-di.md	2018-06-05 18:57:29.386399718 -0400
-@@ -0,0 +1,548 @@
++++ gcc-6.2.0-zip/gcc/config/zip/zip-di.md	2020-03-04 22:59:45.345995181 -0500
+@@ -0,0 +1,562 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
 +;; Filename:	zip-di.md
@@ -3703,7 +3549,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +;;
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
-+;; Copyright (C) 2015-2018, Gisselquist Technology, LLC
++;; Copyright (C) 2015-2020, Gisselquist Technology, LLC
 +;;
 +;; This program is free software (firmware): you can redistribute it and/or
 +;; modify it under the terms of  the GNU General Public License as published
@@ -3793,7 +3639,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +	(clobber (reg:CC CC_REG))
 +	]
 +	"(ZIP_HAS_DI)"
-+	"ADD	%L2,%L0\n\tADD.C\t1,%H0\n\tADD\t%H2,%H0"
++	"ADD	%L2,%L0\t; ADD:DI\n\tADD.C\t1,%H0\n\tADD\t%H2,%H0"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "unknown")])
 +;
 +;
@@ -3808,7 +3654,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +	(clobber (reg:CC CC_REG))
 +	]
 +	"(ZIP_HAS_DI)"
-+	"SUB	%L2,%L0\n\tSUB.C\t1,%H0\n\tSUB\t%H2,%H0"
++	"SUB	%L2,%L0\t; SUB:DI\n\tSUB.C\t1,%H0\n\tSUB\t%H2,%H0"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "unknown")])
 +;
 +;
@@ -3881,7 +3727,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +	(clobber (reg:CC CC_REG))
 +	]
 +	"(ZIP_HAS_DI)"
-+	"CLR	%2	; ABSDI
++	"CLR	%2	; ABS:DI
 +	TEST	%H0
 +	LDILO.LT	1,%2
 +	XOR.LT	-1,%L0
@@ -3983,12 +3829,12 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +			//;  H0 += Rx  ( = 2*LOPART( HI * LO ) + HIPART( LO *LO)
 +			//;
 +			return "; muldi3_raw/A (%H0:%L0) = (%H1:%L1) * (%H2:%L2)\n"
-+				"\tMOV\t%L0,%3\n"
-+				"\tMPY\t%L0,%H0\n"
-+				"\tLSL\t1,%H0\n"
-+				"\tMPYUHI\t%L0,%3\n"
-+				"\tMPY\t%L0,%L0\n"
-+				"\tADD\t%3,%H0";
++				"\tMOV\t%L0,%3\t; %3 is a scratch register\n"
++				"\tMPY\t%L0,%H0\t; In (Ax+B)^2, calc A*B\n"
++				"\tLSL\t1,%H0\t; Multiply OI in FOIL by two\n"
++				"\tMPYUHI\t%L0,%3\t; L of FOIL upper\n"
++				"\tMPY\t%L0,%L0\t; L of FOIL lower\n"
++				"\tADD\t%3,%H0\t; Add upper L to OI for Hresult";
 +		} else if ((regno[0] != regno[1])&&(regno[1] == regno[2])) {
 +			//; RA = RB * RB
 +			//;
@@ -4012,34 +3858,48 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +			//;
 +			return "; muldi3_raw/B (%H0:%L0) = (%H1:%L1) * (%H2:%L2)\n"
 +			"\tMOV\t%L1,%L0\n"
-+			"\tMPY\t%L1,%L0\n"
++			"\tMPY\t%L1,%L0\t; %L0 = %L1^2\n"
 +			"\tMOV\t%H1,%H0\n"
-+			"\tMPY\t%H1,%H0\n"
-+			"\tLSL\t1,%H0\n"
-+			"\tMPY\t%L1,%L1\n"
-+			"\tADD\t%L2,%H0";
++			"\tMPY\t%L1,%H0\t; %H0 = %L1 * %H1\n"
++			"\tLSL\t1,%H0\t; %H0 = (%L1 * %H1)*2\n"
++			"\tMPYUHI\t%L1,%L1\n"
++			"\tADD\t%L1,%H0";
 +		} else if ((regno[0] == regno[1])&&(regno[1] != regno[2])) {
 +			//; RA = RA * RB, with scratch Rx
 +			//;
-+			//; (H0:L0) = (H0:L0) * (H1:L1)
-+			//; (H0:L0) = (H0*2^32 + L0) * (H1 * 2^32 + L1)
-+			//; (H0:L0) = (H0*H1*2^64 + (H0*L1+L0*H1)*2^32 + L0 *L1)
-+			//;	= (H0*L1+L0*H1):(L0*L1)
-+			//;     Rx  = L0
-+			//;    :L0  = LOPART(L1 * R0)
-+			//;  H0     = LOPART(H0 * L1)
-+			//;  H0    += H1 = LOPART(Rx * H1)
-+			//;  H0    += HIPART(L1 * Rx)
++			//; (H0:L0) = (H0:L0) * (H2:L2)
++			//; (H0:L0) = (H0*2^32 + L0) * (H2 * 2^32 + L2)
++			//; (H0:L0) = (H0*H2*2^64 + (H0*L2+L0*H2)*2^32 + L0 *L2)
++			//;	= (H0*L2+L0*H2):(L0*L2)
 +			//;
-+			return "; muldi3_raw/C (%H0:%L0) = (%H1:%L1) * (%H2:%L2)\n"
-+			"\tMOV\t%L0,%3\n"
-+			"\tMPY\t%L1,%L0\n"
-+			"\tMOV\t%L1,%H0\n"
-+			"\tMPY\t%H1,%H0\n"
-+			"\tMPY\t%3,%H1\n"
++			return "; muldi3_raw/C0 (%H0:%L0) = (%H1:%L1) * (%H2:%L2)\n"
++			"\tMPY\t%L0,%H2\n"
++			"\tMPY\t%L2,%H0\n"
++			"\tADD\t%H2,%H0\n"
++			//
++			"\tMOV\t%L0,%H2\n"
++			"\tMPY\t%L2,%L0\n"
++			//
++			"\tMPYUHI %L2,%H2\n"
++			"\tADD\t%H2,%H0\n";
++		} else if ((regno[0] == regno[2])&&(regno[1] != regno[2])) {
++			//; RA = RA * RB, with scratch Rx
++			//;
++			//; (H0:L0) = (H0:L0) * (H2:L2)
++			//; (H0:L0) = (H0*2^32 + L0) * (H2 * 2^32 + L2)
++			//; (H0:L0) = (H0*H2*2^64 + (H0*L2+L0*H2)*2^32 + L0 *L2)
++			//;	= (H0*L2+L0*H2):(L0*L2)
++			//;
++			return "; muldi3_raw/C1 (%H0:%L0) = (%H1:%L1) * (%H2:%L2)\n"
++			"\tMPY\t%L0,%H1\n"
++			"\tMPY\t%L1,%H0\n"
 +			"\tADD\t%H1,%H0\n"
-+			"\tMPY\t%3,%L1\n"
-+			"\tADD\t%L1,%H0";
++			//
++			"\tMOV\t%L0,%H1\n"
++			"\tMPY\t%L1,%L0\n"
++			//
++			"\tMPYUHI %L1,%H1\n"
++			"\tADD\t%H1,%H0\n";
 +		} else {
 +			//; RA = RB * RC
 +			//;
@@ -4061,12 +3921,12 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +			//;  H0    += H1
 +			//;
 +		     return "; muldi3_raw/D (%H0:%L0) = (%H1:%L1) * (%H2:%L2)\n"
-+			"\tMPY	%L2,%H1	; H1 = H1 * L2\n"
-+			"\tMPY	%L1,%H2	; H2 = L1 * L2\n"
-+			"\tMOV	%L2,%L0	; H0:L0 = L1 * L2\n"
++			"\tMPY	%L2,%H1	; %H1 = %H1 * %L2\n"
++			"\tMPY	%L1,%H2	; %H2 = %L1 * %H2\n"
++			"\tMOV	%L2,%L0	; %H0:%L0 = %L1 * %L2\n"
 +			"\tMOV	%L2,%H0\n"
 +			"\tMPY	%L1,%L0\n"
-+			"\tMPYUHI	%L1,%H0\n"
++			"\tMPYUHI %L1,%H0\n"
 +			"\tADD	%H2,%H0	; H0 += (H2 = L1 * H2)\n"
 +			"\tADD	%H1,%H0	; H0 += (H1 = H1 * L2)";
 +		}
@@ -4148,7 +4008,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +		(match_operand:SI 0 "register_operand" "r")
 +		(match_operand:SI 1 "register_operand" "r")))]
 +	""
-+	"CMP\t%H1,%H0
++	"CMP\t%H1,%H0\t; CMP:DI (reg)
 +	CMP.Z\t%L1,%L0"
 +	[(set_attr "ccresult" "set")])
 +;
@@ -4236,7 +4096,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-di.md gcc-6.2.0-zip/gc
 +;
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-float.md gcc-6.2.0-zip/gcc/config/zip/zip-float.md
 --- gcc-6.2.0/gcc/config/zip/zip-float.md	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip-float.md	2017-01-10 14:01:42.029341062 -0500
++++ gcc-6.2.0-zip/gcc/config/zip/zip-float.md	2020-01-23 15:56:47.271952572 -0500
 @@ -0,0 +1,138 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
@@ -4253,7 +4113,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-float.md gcc-6.2.0-zip
 +;;
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
-+;; Copyright (C) 2015,2017, Gisselquist Technology, LLC
++;; Copyright (C) 2015-2020, Gisselquist Technology, LLC
 +;;
 +;; This program is free software (firmware): you can redistribute it and/or
 +;; modify it under the terms of  the GNU General Public License as published
@@ -4378,8 +4238,8 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-float.md gcc-6.2.0-zip
 +;
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.h gcc-6.2.0-zip/gcc/config/zip/zip.h
 --- gcc-6.2.0/gcc/config/zip/zip.h	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip.h	2018-06-05 22:22:38.581639662 -0400
-@@ -0,0 +1,4114 @@
++++ gcc-6.2.0-zip/gcc/config/zip/zip.h	2020-01-23 15:56:49.883933684 -0500
+@@ -0,0 +1,4216 @@
 +////////////////////////////////////////////////////////////////////////////////
 +//
 +// Filename: 	gcc/config/zip/zip.h
@@ -4393,7 +4253,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.h gcc-6.2.0-zip/gcc/co
 +//
 +////////////////////////////////////////////////////////////////////////////////
 +//
-+// Copyright (C) 2016-2017, Gisselquist Technology, LLC
++// Copyright (C) 2016-2020, Gisselquist Technology, LLC
 +//
 +// This program is free software (firmware): you can redistribute it and/or
 +// modify it under the terms of  the GNU General Public License as published
@@ -4778,7 +4638,22 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.h gcc-6.2.0-zip/gcc/co
 +		}						\
 +	} while(0)
 +
-+// TARGET_PROMOTE_FUNCTION_MODE
++/* TARGET_PROMOTE_FUNCTION_MODE ... Like PROMOTE_MODE, but it is applied to
++ * outgoing function arguments or function return values.  The target hook
++ * should return the new mode and possibly change *punsignedp if the promotion
++ * should change signedness.  This function is called only for scalar or
++ * pointer types.
++ *
++ * for_return allows to distinguish the promotion of arguments and return
++ * values.  If it is 1, a return value is being promoted and
++ * TARGET_FUNTION_VALUE must perform the same promotions done here.  If it is 2,
++ * the ...
++ *
++ * The default is to not promote arguments and return values.  You can also
++ * define the hook to default_promote_function_mode_aways_promote if you would
++ * like to apply the same rules given by PROMOTE_MODE.
++ *
++ */
 +#define	TARGET_PROMOTE_FUNCTION_MODE	default_promote_function_mode_always_promote
 +
 +/* PARM_BOUNDARY ... Normal alignment required for function parameters on the
@@ -6561,11 +6436,86 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.h gcc-6.2.0-zip/gcc/co
 +
 +/* 17.09.08 How scalar function values are returned */
 +
-+/* TARGET_FUNCTION_VALUE
++/* TARGET_FUNCTION_VALUE ... Define this to return an RTX representing the
++ * place where a function returns or receives a value of date type ret_type,
++ * a tree node representing a data type, fn_decl_or_type is a tree node
++ * representing FUNCTION_DECL or FUNCTION_TYPE of a function being called.  If
++ * outgoing is false, the hook should compute the register in which the caller
++ * will see the return value.  Otherwise, the hook should return an RTX
++ * representing the place where a function returns a value.
++ *
++ * On many machines, only TYPE_MODE(ret_type) is relevant.  (Actually, on most
++ * machines, scalar values are returned in the same place regardless of mode.)
++ * The value of the expression is usually a reg RTX for the hard register where
++ * the return value is stored.  The value can also be a parallel RTX, if the
++ * return value is in multiple places.  See TARGET_FUNTION_ARG for an explanation of the parallel form.  Note that the callee will populate every location
++ * specified in the parallel, but if the first element of the parallel contains
++ * the whole return value, callers will use that element as the canonical
++ * location and ignore the others.  The m68k port uses this type of parallel to
++ * return pointers in both %a0 (the canonical location) and %d0.
++ *
++ * If TARGET_PROMOTE_FUNCTION_RETURN returns true, you must apply the same
++ * promotion rules specified in PROMOTE_MODE if valtype is a scalar type.
++ *
++ * If the precise function being called is known, func is a tree node
++ * (FUNCTION_DECL) for it; otherwise, func is a null pointer.  This makes it
++ * possible to use a different value-returning convention for specific functions
++ * when all their calls are knon.
++ *
++ * Some target machines have "register windows" ...
++ *
++ * TARGET_FUNTION_VALUE is not used for return values with aggregate data types,
++ * because these are returned another way.  See TARGET_STRUCT_VALUE_RTX and
++ * related macros below.
++ */
++#define	TARGET_FUNCTION_VALUE	zip_function_value
++
++/* FUNCTION_VALUE(V,F) ... deprecated
 + */
 +
 +/* LIBCALL_VALUE
 + */
++
++/* TARGET_LIBCALL_VALUE
++ */
++
++/* LIBCALL_VALUE
++ */
++
++/* FUNCTION_VALUE_REGNO_P(REGNO) ... A C expression that is nonzero if regno
++ * is the number of a hard register in which the values of called function may
++ * come back.
++ *
++ * A register whose use for returning values is limited to serving as the
++ * second of a pair (for a value of type double, say) need not be recognized
++ * by this target hook.  So for most machines, this definition suffices:
++ *
++ * #define FUNCTION_VALUE_REGNO_P(N) ((N) == 0)
++ *
++ * If the machine has register windows, so that the caller and the called
++ * function use different registers for the returned value, this macro should
++ * recognize only the caller's register numbers.
++ *
++ * This macro has been deprecated.  Use TARGET_FUNTION_VALUE_REGNO_P for a
++ * new target instead.
++ *
++ *
++ */
++
++/* TARGET_FUNCTION_VALUE_REGNO_P(int regno) ... A target hook that returns true
++ * if regno is the number of a hard register in which the values of the called
++ * function may come back.
++ *
++ * A register whose use for returning values is limited to serving as the
++ * second of a pair (for a value of type double, say) need not be recognized
++ * by this target hook.
++ *
++ * If the machine has register windows ...
++ *
++ * If this hook is not defined, then FUNCTION_VALUE_REGNO_P will be used.
++ */
++#undef	TARGET_FUNCTION_VALUE_REGNO_P
++#define	TARGET_FUNCTION_VALUE_REGNO_P	zip_function_value_regno_p
 +
 +
 +/* 17.09.09 How large values are returned */
@@ -7387,17 +7337,29 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.h gcc-6.2.0-zip/gcc/co
 + * contain a tab, a pseudo op, and then another tab.
 + */
 +
-+#undef	TARGET_ASM_ALIGNED_HI_OP
-+#undef	TARGET_ASM_ALIGNED_SI_OP
-+// #undef	TARGET_ASM_ALIGNED_DI_OP
-+#define	TARGET_ASM_ALIGNED_HI_OP	".short"
 +// The assembler is set up to call a 4-byte integer a long.  This definition of
 +// a long isn't consistent with the compilers definition.  For this reason,
 +// the ZipCPU backend for the GNU Assembler defines a long as a 64-bit number,
 +// and an int as a 32-bit number.
-+#define	TARGET_ASM_ALIGNED_SI_OP	".int"
-+// #define	TARGET_ASM_ALIGNED_DI_OP	".long"	
 +
++/*
++ * These should be the same for other processor, so the default options should
++ * work quite nicely for us.
++ *
++#undef	TARGET_ASM_ALIGNED_HI_OP
++#undef	TARGET_ASM_ALIGNED_SI_OP
++#undef	TARGET_ASM_ALIGNED_DI_OP
++#define	TARGET_ASM_ALIGNED_HI_OP	"\t.short\t"
++#define	TARGET_ASM_ALIGNED_SI_OP	"\t.int\t"
++#define	TARGET_ASM_ALIGNED_DI_OP	"\t.quad\t"
++
++#undef	TARGET_ASM_UNALIGNED_HI_OP
++#undef	TARGET_ASM_UNALIGNED_SI_OP
++#undef	TARGET_ASM_UNALIGNED_DI_OP
++#define	TARGET_ASM_UNALIGNED_HI_OP	TARGET_ASM_ALIGNED_HI_OP
++#define	TARGET_ASM_UNALIGNED_SI_OP	TARGET_ASM_ALIGNED_SI_OP
++#define	TARGET_ASM_UNALIGNED_DI_OP	TARGET_ASM_ALIGNED_DI_OP
++*/
 +
 +/* 17.20.4 Output and Generation of Labels */
 +
@@ -8496,8 +8458,8 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.h gcc-6.2.0-zip/gcc/co
 +
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.md gcc-6.2.0-zip/gcc/config/zip/zip.md
 --- gcc-6.2.0/gcc/config/zip/zip.md	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip.md	2018-06-07 12:51:05.802342817 -0400
-@@ -0,0 +1,1897 @@
++++ gcc-6.2.0-zip/gcc/config/zip/zip.md	2020-01-23 15:56:52.419915346 -0500
+@@ -0,0 +1,1907 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
 +;; Filename:	zip.md
@@ -8513,7 +8475,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.md gcc-6.2.0-zip/gcc/c
 +;;
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
-+;; Copyright (C) 2015-2018, Gisselquist Technology, LLC
++;; Copyright (C) 2015-2020, Gisselquist Technology, LLC
 +;;
 +;; This program is free software (firmware): you can redistribute it and/or
 +;; modify it under the terms of  the GNU General Public License as published
@@ -9213,8 +9175,18 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.md gcc-6.2.0-zip/gcc/c
 +	rtx	cmpop0 = copy_rtx(XEXP(operands[1], 0));
 +	rtx	cmpop1 = copy_rtx(XEXP(operands[1], 1));
 +
-+	zip_canonicalize_comparison((int *)&ccode, &cmpop0, &cmpop1, true);
-+	emit_insn(gen_cmpsi(cmpop0, cmpop1));
++	if ((DImode == GET_MODE(cmpop0)) && (DImode == GET_MODE(cmpop1))) {
++		if ((REG_P(cmpop0) && REG_P(cmpop1)
++				&& (ccode == EQ || ccode == NE
++					|| ccode == LTU || ccode == LT
++					|| ccode == GEU || ccode == GE)))
++			emit_insn(gen_cmpdi(cmpop0, cmpop1));
++		else
++			FAIL;
++	} else {
++		zip_canonicalize_comparison((int *)&ccode, &cmpop0, &cmpop1, true);
++		emit_insn(gen_cmpsi(cmpop0, cmpop1));
++	}
 +
 +	operands[1] = gen_rtx_fmt_ee(ccode, VOIDmode,
 +			gen_rtx_REG(CCmode, 14), const0_rtx);
@@ -10397,7 +10369,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip.md gcc-6.2.0-zip/gcc/c
 +;	pattern
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/gcc/config/zip/zip-ops.md
 --- gcc-6.2.0/gcc/config/zip/zip-ops.md	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip-ops.md	2018-03-22 18:33:11.175718614 -0400
++++ gcc-6.2.0-zip/gcc/config/zip/zip-ops.md	2020-03-04 23:02:06.361236650 -0500
 @@ -0,0 +1,2744 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
@@ -10425,7 +10397,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;;
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
-+;; Copyright (C) 2017, Gisselquist Technology, LLC
++;; Copyright (C) 2017-2020, Gisselquist Technology, LLC
 +;;
 +;; This program is free software (firmware): you can redistribute it and/or
 +;; modify it under the terms of  the GNU General Public License as published
@@ -10534,7 +10506,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; ADD (genzipop_long)
++; ADD (genzipop_long_offset)
 +;
 +;
 +;
@@ -10545,7 +10517,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"ADD\t%2,%0	; addsi3_off"
++	"ADD\t%3+%2,%0	; addsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -10556,7 +10528,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"ADD\t%1,%0	; addsi3_off_raw"
++	"ADD\t%2+%1,%0	; addsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -10716,7 +10688,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; SUB (genzipop_long)
++; SUB (genzipop_long_offset)
 +;
 +;
 +;
@@ -10727,7 +10699,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"SUB\t%2,%0	; subsi3_off"
++	"SUB\t%3+%2,%0	; subsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -10738,7 +10710,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"SUB\t%1,%0	; subsi3_off_raw"
++	"SUB\t%2+%1,%0	; subsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -10898,7 +10870,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; MPY (genzipop_long)
++; MPY (genzipop_long_offset)
 +;
 +;
 +;
@@ -10909,7 +10881,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"MPY\t%2,%0	; mulsi3_off"
++	"MPY\t%3+%2,%0	; mulsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -10920,7 +10892,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"MPY\t%1,%0	; mulsi3_off_raw"
++	"MPY\t%2+%1,%0	; mulsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11080,7 +11052,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; DIVS (genzipop_long)
++; DIVS (genzipop_long_offset)
 +;
 +;
 +;
@@ -11091,7 +11063,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	"(ZIP_DIVIDE)"
-+	"DIVS\t%2,%0	; divsi3_off"
++	"DIVS\t%3+%2,%0	; divsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11102,7 +11074,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	"(ZIP_DIVIDE)"
-+	"DIVS\t%1,%0	; divsi3_off_raw"
++	"DIVS\t%2+%1,%0	; divsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11262,7 +11234,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; DIVU (genzipop_long)
++; DIVU (genzipop_long_offset)
 +;
 +;
 +;
@@ -11273,7 +11245,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	"(ZIP_DIVIDE)"
-+	"DIVU\t%2,%0	; udivsi3_off"
++	"DIVU\t%3+%2,%0	; udivsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11284,7 +11256,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	"(ZIP_DIVIDE)"
-+	"DIVU\t%1,%0	; udivsi3_off_raw"
++	"DIVU\t%2+%1,%0	; udivsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11444,7 +11416,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; AND (genzipop_long)
++; AND (genzipop_long_offset)
 +;
 +;
 +;
@@ -11455,7 +11427,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"AND\t%2,%0	; andsi3_off"
++	"AND\t%3+%2,%0	; andsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11466,7 +11438,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"AND\t%1,%0	; andsi3_off_raw"
++	"AND\t%2+%1,%0	; andsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11626,7 +11598,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; OR (genzipop_long)
++; OR (genzipop_long_offset)
 +;
 +;
 +;
@@ -11637,7 +11609,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"OR\t%2,%0	; iorsi3_off"
++	"OR\t%3+%2,%0	; iorsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11648,7 +11620,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"OR\t%1,%0	; iorsi3_off_raw"
++	"OR\t%2+%1,%0	; iorsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11808,7 +11780,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; XOR (genzipop_long)
++; XOR (genzipop_long_offset)
 +;
 +;
 +;
@@ -11819,7 +11791,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"XOR\t%2,%0	; xorsi3_off"
++	"XOR\t%3+%2,%0	; xorsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11830,7 +11802,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"XOR\t%1,%0	; xorsi3_off_raw"
++	"XOR\t%2+%1,%0	; xorsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -11990,7 +11962,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; ASR (genzipop_long)
++; ASR (genzipop_long_offset)
 +;
 +;
 +;
@@ -12001,7 +11973,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"ASR\t%2,%0	; ashrsi3_off"
++	"ASR\t%3+%2,%0	; ashrsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -12012,7 +11984,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"ASR\t%1,%0	; ashrsi3_off_raw"
++	"ASR\t%2+%1,%0	; ashrsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -12172,7 +12144,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; LSL (genzipop_long)
++; LSL (genzipop_long_offset)
 +;
 +;
 +;
@@ -12183,7 +12155,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"LSL\t%2,%0	; ashlsi3_off"
++	"LSL\t%3+%2,%0	; ashlsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -12194,7 +12166,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"LSL\t%1,%0	; ashlsi3_off_raw"
++	"LSL\t%2+%1,%0	; ashlsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -12354,7 +12326,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +;
 +;
 +;
-+; LSR (genzipop_long)
++; LSR (genzipop_long_offset)
 +;
 +;
 +;
@@ -12365,7 +12337,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 3 "const_int_operand" "N"))))
 +	(clobber (reg:CC CC_REG))]
 +	""
-+	"LSR\t%2,%0	; lshrsi3_off"
++	"LSR\t%3+%2,%0	; lshrsi3_off"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -12376,7 +12348,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +				(match_operand:SI 2 "const_int_operand" "N"))))
 +	(set (reg:CC CC_REG) (compare:CC (match_dup 0) (const_int 0)))]
 +	""
-+	"LSR\t%1,%0	; lshrsi3_off_raw"
++	"LSR\t%2+%1,%0	; lshrsi3_off_raw"
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "set")])
 +;
 +;
@@ -13145,8 +13117,8 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-ops.md gcc-6.2.0-zip/g
 +	[(set_attr "predicable" "no") (set_attr "ccresult" "unchanged")])
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-peephole.md gcc-6.2.0-zip/gcc/config/zip/zip-peephole.md
 --- gcc-6.2.0/gcc/config/zip/zip-peephole.md	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip-peephole.md	2017-03-01 15:46:02.440221158 -0500
-@@ -0,0 +1,768 @@
++++ gcc-6.2.0-zip/gcc/config/zip/zip-peephole.md	2020-01-23 15:57:11.383778220 -0500
+@@ -0,0 +1,602 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
 +;; Filename:	zip-peephole.md
@@ -13163,7 +13135,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-peephole.md gcc-6.2.0-
 +;;
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
-+;; Copyright (C) 2015,2017, Gisselquist Technology, LLC
++;; Copyright (C) 2015-2020, Gisselquist Technology, LLC
 +;;
 +;; This program is free software (firmware): you can redistribute it and/or
 +;; modify it under the terms of  the GNU General Public License as published
@@ -13190,172 +13162,6 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-peephole.md gcc-6.2.0-
 +;;
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;
-+;
-+;
-+;
-+;
-+; Match:
-+;	CMP	R1,R0
-+;	BGTU	lbl
-+; Transform to:
-+;	CMP	R0,R1
-+;	BC	lbl
-+;
-+(define_peephole2
-+	[(set (reg:CC CC_REG) (compare:CC
-+		(match_operand:SI 0 "register_operand")
-+		(match_operand:SI 1 "register_operand")))
-+	(set (pc) (if_then_else (gtu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_operand 2 ""))
-+			(pc)))]
-+	"(ZIP_PEEPHOLE)"
-+	[(set (reg:CC CC_REG) (compare:CC (match_dup 1) (match_dup 0)))
-+	(set (pc) (if_then_else (ltu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_dup 2))
-+			(pc)))]
-+	"")
-+(define_peephole2
-+	[(match_scratch:SI 3 "=r")
-+	(set (reg:CC CC_REG) (compare:CC
-+		(match_operand:SI 0 "register_operand")
-+		(match_operand 1 "const_int_operand")))
-+	(match_dup 3)
-+	(set (pc) (if_then_else (gtu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_operand 2 ""))
-+			(pc)))]
-+	"(ZIP_PEEPHOLE)"
-+	[(set (match_dup 3) (match_dup 1))
-+	(set (reg:CC CC_REG) (compare:CC (match_dup 3) (match_dup 0)))
-+	(set (pc) (if_then_else (ltu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_dup 2))
-+			(pc)))]
-+	"")
-+;(define_peephole2
-+;	[(set (reg:CC CC_REG) (compare:CC
-+;		(match_operand:SI 0 "register_operand")
-+;		(match_operand 1 "const_int_operand")))
-+;	(set (pc) (if_then_else (gtu (reg:CC CC_REG) (const_int 0))
-+;			(label_ref (match_operand 2 ""))
-+;			(pc)))]
-+;	""
-+;	[(set (reg:CC CC_REG) (compare:CC (match_dup 0) (match_dup 1)))
-+;	(set (pc) (if_then_else (geu (reg:CC CC_REG) (const_int 0))
-+;			(label_ref (match_dup 2))
-+;			(pc)))]
-+;	"operands[1] = GEN_INT(INTVAL(operands[1])-1);")
-+;
-+;
-+; Match:
-+;	CMP	R1,R0
-+;	BGEU	lbl
-+; Transform to:
-+;	CMP	1(R0),R1
-+;	BC	lbl
-+;
-+(define_peephole2
-+	[(set (reg:CC CC_REG) (compare:CC
-+		(match_operand:SI 0 "register_operand")
-+		(match_operand:SI 1 "register_operand")))
-+	(set (pc) (if_then_else (geu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_operand 2 ""))
-+			(pc)))]
-+	"(ZIP_PEEPHOLE)"
-+	[(set (reg:CC CC_REG) (compare:CC
-+		(match_dup 1) (plus:SI (match_dup 0) (const_int 1))))
-+	(set (pc) (if_then_else (ltu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_dup 2))
-+			(pc)))]
-+	"")
-+;
-+;
-+; Match:
-+;	CMP	R1,R0
-+;	BGE	lbl
-+; Transform to:
-+;	CMP	1(R0),R1
-+;	BLT	lbl
-+; ... why?  when we support a BGE instruction?
-+;(define_peephole2
-+	;[(set (reg:CC CC_REG) (compare:CC
-+		;(match_operand:SI 0 "register_operand")
-+		;(match_operand:SI 1 "register_operand")))
-+	;(set (pc) (if_then_else (ge (reg:CC CC_REG) (const_int 0))
-+			;(label_ref (match_operand 2 ""))
-+			;(pc)))]
-+	;"(ZIP_PEEPHOLE)"
-+	;[(set (reg:CC CC_REG) (compare:CC (match_dup 1)
-+			;(plus:SI (match_dup 0) (const_int 1))))
-+	;(set (pc) (if_then_else (lt (reg:CC CC_REG) (const_int 0))
-+			;(label_ref (match_dup 2))
-+			;(pc)))]
-+	;"")
-+;
-+;
-+; Match:
-+;	CMP	R1,R0
-+;	BLEU	lbl
-+; Transform to:
-+;	CMP	1(R1),R0
-+;	BC	lbl
-+;
-+(define_peephole2
-+	[(set (reg:CC CC_REG) (compare:CC
-+		(match_operand:SI 0 "register_operand" "")
-+		(match_operand:SI 1 "register_operand" "")))
-+	(set (pc) (if_then_else (leu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_operand 2 "" ""))
-+			(pc)))]
-+	"(ZIP_PEEPHOLE)"
-+	[(set (reg:CC CC_REG) (compare:CC (match_dup 0)
-+			(plus:SI (match_dup 1) (const_int 1))))
-+	(set (pc) (if_then_else (ltu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_dup 2))
-+			(pc)))]
-+	"")
-+; 
-+;
-+;
-+; Match:
-+;	CMP	R1,R0
-+;	BLE	lbl
-+; Transform to:
-+;	CMP	1(R1),R0
-+;	BLT	lbl
-+;
-+(define_peephole2
-+	[(set (reg:CC CC_REG)
-+		(compare:CC (match_operand:SI 0 "register_operand" "")
-+			(match_operand:SI 1 "const_int_operand" "")))
-+	(set (pc) (if_then_else (le (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_operand 2 "" ""))
-+			(pc)))]
-+	"(ZIP_PEEPHOLE)&&(INTVAL(operands[1])<((1<<17)-2))"
-+	[(set (reg:CC CC_REG) (compare:CC (match_dup 0) (match_dup 1)))
-+	(set (pc) (if_then_else (lt (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_dup 2))
-+			(pc)))]
-+	"operands[1] = GEN_INT(INTVAL(operands[1])+1);")
-+;
-+; Match:
-+;	CMP	R1,R0
-+;	BLEU	lbl
-+; Transform to:
-+;	CMP	1(R1),R0
-+;	BC(LTU)	lbl
-+;
-+(define_peephole2
-+	[(set (reg:CC CC_REG)
-+		(compare:CC (match_operand:SI 0 "register_operand" "")
-+			(match_operand:SI 1 "const_int_operand" "")))
-+	(set (pc) (if_then_else (leu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_operand 2 "" ""))
-+			(pc)))]
-+	"(ZIP_PEEPHOLE)&&(INTVAL(operands[1])<((1<<17)-2))"
-+	[(set (reg:CC CC_REG) (compare:CC (match_dup 0) (match_dup 1)))
-+	(set (pc) (if_then_else (ltu (reg:CC CC_REG) (const_int 0))
-+			(label_ref (match_dup 2))
-+			(pc)))]
-+	"operands[1] = GEN_INT(INTVAL(operands[1])+1);")
 +;
 +;
 +;
@@ -13917,8 +13723,8 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-peephole.md gcc-6.2.0-
 +;
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-protos.h gcc-6.2.0-zip/gcc/config/zip/zip-protos.h
 --- gcc-6.2.0/gcc/config/zip/zip-protos.h	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip-protos.h	2017-02-17 16:45:53.264117439 -0500
-@@ -0,0 +1,82 @@
++++ gcc-6.2.0-zip/gcc/config/zip/zip-protos.h	2020-01-23 15:57:14.527755487 -0500
+@@ -0,0 +1,83 @@
 +////////////////////////////////////////////////////////////////////////////////
 +//
 +// Filename: 	zip-protos.h
@@ -13932,7 +13738,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-protos.h gcc-6.2.0-zip
 +//
 +////////////////////////////////////////////////////////////////////////////////
 +//
-+// Copyright (C) 2016, Gisselquist Technology, LLC
++// Copyright (C) 2016-2020, Gisselquist Technology, LLC
 +//
 +// This program is free software (firmware): you can redistribute it and/or
 +// modify it under the terms of  the GNU General Public License as published
@@ -13989,6 +13795,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-protos.h gcc-6.2.0-zip
 +extern	int	zip_pd_mvimm_operand(rtx op);
 +extern	int	zip_ct_const_address_operand(rtx op);
 +extern	int	zip_pd_const_address_operand(rtx op);
++extern	bool	zip_function_value_regno_p(unsigned regno);
 +extern	const char *zip_movsicc(rtx, rtx, rtx, rtx);
 +extern	const char *zip_addqics(rtx, rtx, rtx, rtx);
 +extern	const char *zip_cbranchdi(rtx, rtx, rtx, rtx);
@@ -14003,7 +13810,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-protos.h gcc-6.2.0-zip
 +
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-sync.md gcc-6.2.0-zip/gcc/config/zip/zip-sync.md
 --- gcc-6.2.0/gcc/config/zip/zip-sync.md	1969-12-31 19:00:00.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/config/zip/zip-sync.md	2017-02-22 18:03:26.740198685 -0500
++++ gcc-6.2.0-zip/gcc/config/zip/zip-sync.md	2020-01-23 15:57:17.911731020 -0500
 @@ -0,0 +1,415 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
@@ -14020,7 +13827,7 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/config/zip/zip-sync.md gcc-6.2.0-zip/
 +;;
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;
-+;; Copyright (C) 2015,2017, Gisselquist Technology, LLC
++;; Copyright (C) 2015-2020, Gisselquist Technology, LLC
 +;;
 +;; This program is free software (firmware): you can redistribute it and/or
 +;; modify it under the terms of  the GNU General Public License as published
@@ -14498,12 +14305,13 @@ diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/df-scan.c gcc-6.2.0-zip/gcc/df-scan.c
  static HARD_REG_SET elim_reg_set;
 diff -Naur '--exclude=*.swp' gcc-6.2.0/gcc/emit-rtl.c gcc-6.2.0-zip/gcc/emit-rtl.c
 --- gcc-6.2.0/gcc/emit-rtl.c	2016-02-16 18:12:19.000000000 -0500
-+++ gcc-6.2.0-zip/gcc/emit-rtl.c	2016-12-31 16:43:35.065677060 -0500
-@@ -59,6 +59,15 @@
++++ gcc-6.2.0-zip/gcc/emit-rtl.c	2019-08-13 22:57:06.605187480 -0400
+@@ -59,6 +59,16 @@
  #include "stor-layout.h"
  #include "opts.h"
  
 +
++// #define	DO_ZIP_DEBUGS
 +#ifdef	DO_ZIP_DEBUGS
 +#include <stdio.h>
 +#define	ZIP_DEBUG_LINE(STR,RTX) do{fprintf(stderr,"%s;%d/%s\n",__FILE__,__LINE__,STR); zip_debug_rtx(RTX);} while(0)

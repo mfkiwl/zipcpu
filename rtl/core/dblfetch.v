@@ -23,7 +23,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Copyright (C) 2017-2019, Gisselquist Technology, LLC
+// Copyright (C) 2017-2020, Gisselquist Technology, LLC
 //
 // This program is free software (firmware): you can redistribute it and/or
 // modify it under the terms of  the GNU General Public License as published
@@ -52,9 +52,9 @@
 module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 			i_stall_n, i_pc, o_insn, o_pc, o_valid,
 		o_wb_cyc, o_wb_stb, o_wb_we, o_wb_addr, o_wb_data,
-			i_wb_ack, i_wb_stall, i_wb_err, i_wb_data,
+			i_wb_stall, i_wb_ack, i_wb_err, i_wb_data,
 		o_illegal);
-	parameter		ADDRESS_WIDTH=30, AUX_WIDTH = 1;
+	parameter		ADDRESS_WIDTH=30;
 	localparam		AW=ADDRESS_WIDTH, DW = 32;
 	input	wire			i_clk, i_reset, i_new_pc, i_clear_cache,
 						i_stall_n;
@@ -68,7 +68,7 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	output	reg	[(AW-1):0]	o_wb_addr;
 	output	wire	[(DW-1):0]	o_wb_data;
 	// And return inputs
-	input	wire			i_wb_ack, i_wb_stall, i_wb_err;
+	input	wire			i_wb_stall, i_wb_ack, i_wb_err;
 	input	wire	[(DW-1):0]	i_wb_data;
 	// And ... the result if we got an error
 	output	reg		o_illegal;
@@ -136,32 +136,32 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 
 	initial	invalid_bus_cycle = 1'b0;
 	always @(posedge i_clk)
-		if ((o_wb_cyc)&&(i_new_pc))
-			invalid_bus_cycle <= 1'b1;
-		else if (!o_wb_cyc)
-			invalid_bus_cycle <= 1'b0;
+	if ((o_wb_cyc)&&(i_new_pc))
+		invalid_bus_cycle <= 1'b1;
+	else if (!o_wb_cyc)
+		invalid_bus_cycle <= 1'b0;
 
 	initial	o_wb_addr = {(AW){1'b1}};
 	always @(posedge i_clk)
-		if (i_new_pc)
-			o_wb_addr <= i_pc[AW+1:2];
-		else if ((o_wb_stb)&&(!i_wb_stall))
-			o_wb_addr <= o_wb_addr + 1'b1;
+	if (i_new_pc)
+		o_wb_addr <= i_pc[AW+1:2];
+	else if ((o_wb_stb)&&(!i_wb_stall))
+		o_wb_addr <= o_wb_addr + 1'b1;
 
-	//////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	// Now for the immediate output word to the CPU
 	//
-	//////////////////
+	////////////////////////////////////////////////////////////////////////
 
 	initial	o_valid = 1'b0;
 	always @(posedge i_clk)
-		if ((i_reset)||(i_new_pc)||(i_clear_cache))
-			o_valid <= 1'b0;
-		else if ((o_wb_cyc)&&((i_wb_ack)||(i_wb_err)))
-			o_valid <= 1'b1;
-		else if (i_stall_n)
-			o_valid <= cache_valid;
+	if ((i_reset)||(i_new_pc)||(i_clear_cache))
+		o_valid <= 1'b0;
+	else if ((o_wb_cyc)&&((i_wb_ack)||(i_wb_err)))
+		o_valid <= 1'b1;
+	else if (i_stall_n)
+		o_valid <= cache_valid;
 
 	always @(posedge i_clk)
 	if ((!o_valid)||(i_stall_n))
@@ -181,37 +181,37 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 
 	initial	o_illegal = 1'b0;
 	always @(posedge i_clk)
-		if ((i_reset)||(i_new_pc)||(i_clear_cache))
-			o_illegal <= 1'b0;
-		else if ((!o_valid)||(i_stall_n))
-		begin
-			if (cache_valid)
-				o_illegal <= (o_illegal)||(cache_illegal);
-			else if ((o_wb_cyc)&&(i_wb_err))
-				o_illegal <= 1'b1;
-		end
+	if ((i_reset)||(i_new_pc)||(i_clear_cache))
+		o_illegal <= 1'b0;
+	else if ((!o_valid)||(i_stall_n))
+	begin
+		if (cache_valid)
+			o_illegal <= (o_illegal)||(cache_illegal);
+		else if ((o_wb_cyc)&&(i_wb_err))
+			o_illegal <= 1'b1;
+	end
 
 
-	//////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	// Now for the output/cached word
 	//
-	//////////////////
+	////////////////////////////////////////////////////////////////////////
 
 	initial	cache_valid = 1'b0;
 	always @(posedge i_clk)
-		if ((i_reset)||(i_new_pc)||(i_clear_cache))
+	if ((i_reset)||(i_new_pc)||(i_clear_cache))
+		cache_valid <= 1'b0;
+	else begin
+		if ((o_valid)&&(o_wb_cyc)&&((i_wb_ack)||(i_wb_err)))
+			cache_valid <= (!i_stall_n)||(cache_valid);
+		else if (i_stall_n)
 			cache_valid <= 1'b0;
-		else begin
-			if ((o_valid)&&(o_wb_cyc)&&((i_wb_ack)||(i_wb_err)))
-				cache_valid <= (!i_stall_n)||(cache_valid);
-			else if (i_stall_n)
-				cache_valid <= 1'b0;
-		end
+	end
 
 	always @(posedge i_clk)
-		if ((o_wb_cyc)&&(i_wb_ack))
-			cache_word <= i_wb_data;
+	if (i_wb_ack)
+		cache_word <= i_wb_data;
 
 	initial	cache_illegal = 1'b0;
 	always @(posedge i_clk)
@@ -269,6 +269,12 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 		f_past_o_valid     <= o_valid;
 		f_past_stall_n     <= i_stall_n;
 	end
+
+	reg	[AW+1:0]	f_next_addr, f_dbl_next;
+	always @(*)
+		f_next_addr = o_pc + 4;
+	always @(*)
+		f_dbl_next = f_next_addr + 4;
 `endif
 
 `ifdef	FORMAL
@@ -283,13 +289,14 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 `define	ASSUME	assert
 `endif
 
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	//
 	// Assumptions about our inputs
 	//
 	//
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+	//
 
 	always @(*)
 	if (!f_past_valid)
@@ -314,15 +321,15 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 
 	//
 	// Assume we start from a reset condition
-	initial	assume(i_reset);
+	initial	`ASSUME(i_reset);
 
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	//
 	// Wishbone bus properties
 	//
 	//
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 
 	localparam	F_LGDEPTH=2;
 	wire	[(F_LGDEPTH-1):0]	f_nreqs, f_nacks, f_outstanding;
@@ -345,23 +352,23 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 // Now, apply the following to Verilator *or* yosys-smtbmc
 //
 `ifdef	VERILATOR_FORMAL
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	//
 	// Assumptions about our interaction with the CPU
 	//
 	//
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 
 	// Assume that any reset is either accompanied by a new address,
 	// or a new address immediately follows it.
-	always @(posedge i_clk)
-		if ((f_past_valid)&&(f_past_reset))
-			assume(i_new_pc);
+//	always @(posedge i_clk)
+//	if ((f_past_valid)&&(f_past_reset))
+//		`ASSUME(i_new_pc);
 
 	always @(posedge i_clk)
 	if (f_past_clear_cache)
-		assume(!i_clear_cache);
+		`ASSUME(!i_clear_cache);
 
 	//
 	//
@@ -370,26 +377,26 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	// the synthesis tool to remove them.
 	//
 	always @(*)
-		assume(i_pc[1:0] == 2'b00);
+		`ASSUME(i_pc[1:0] == 2'b00);
 
 	// Some things to know from the CPU ... there will always be a
 	// i_new_pc request following any reset
 	always @(posedge i_clk)
-		if ((f_past_valid)&&(f_past_reset))
-			assume(i_new_pc);
+	if ((f_past_valid)&&(f_past_reset)&&!i_reset)
+		`ASSUME(i_new_pc);
 
 	// There will also be a i_new_pc request following any request to clear
 	// the cache.
 	always @(posedge i_clk)
-		if ((f_past_valid)&&(f_past_clear_cache))
-			assume(i_new_pc);
+	if ((f_past_valid)&&(f_past_clear_cache))
+		`ASSUME(i_new_pc);
 
 	always @(posedge i_clk)
 	if (f_past_clear_cache)
-		assume(!i_clear_cache);
+		`ASSUME(!i_clear_cache);
 
 	always @(*)
-		assume(i_pc[1:0] == 2'b00);
+		`ASSUME(i_pc[1:0] == 2'b00);
 `endif
 
 `ifdef	FORMAL
@@ -407,12 +414,12 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 
 	// Now, let's look at the delay the CPU takes to accept an instruction.
 	always @(posedge i_clk)
-		// If no instruction is ready, then keep our counter at zero
-		if ((!o_valid)||(i_stall_n))
-			f_cpu_delay <= 0;
-		else
-			// Otherwise, count the clocks the CPU takes to respond
-			f_cpu_delay <= f_cpu_delay + 1'b1;
+	// If no instruction is ready, then keep our counter at zero
+	if ((!o_valid)||(i_stall_n))
+		f_cpu_delay <= 0;
+	else
+		// Otherwise, count the clocks the CPU takes to respond
+		f_cpu_delay <= f_cpu_delay + 1'b1;
 
 	always @(posedge i_clk)
 		assume(f_cpu_delay < F_CPU_DELAY);
@@ -420,13 +427,14 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 
 
 
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	//
 	// Assertions about our outputs
 	//
 	//
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+	//
 	always @(posedge i_clk)
 	if ((f_past_valid)&&($past(o_wb_stb))&&(!$past(i_wb_stall))
 			&&(!$past(i_new_pc)))
@@ -465,7 +473,7 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	always @(posedge i_clk)
 	if ((f_past_valid)&&(!$past(i_new_pc))
 			&&($past(o_valid))&&($past(i_stall_n)))
-		assert(o_pc[AW+1:2] == $past(o_pc[AW+1:2])+1'b1);
+		assert(o_pc == $past(f_next_addr));
 
 
 	//
@@ -499,13 +507,13 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 			&&($past(o_valid))&&(!o_valid)&&(!o_illegal))
 		assert((o_wb_cyc)||(invalid_bus_cycle));
 
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	//
 	// Our "contract" with the CPU
 	//
 	//
-	/////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	// For any particular address, that address is associated with an
 	// instruction and a flag regarding whether or not it is illegal.
@@ -524,13 +532,21 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	// affect anything synthesized.
 	//
 	wire	f_this_addr, f_this_pc, f_this_req, f_this_data,
-		f_this_insn;
+		f_this_insn, f_this_return,
+		f_cache_pc, f_cache_insn;
+	wire	[AW-1:0]	this_return_address,
+				next_pc_address;
 
 	assign	f_this_addr = (o_wb_addr ==   f_const_addr);
 	assign	f_this_pc   = (o_pc      == { f_const_addr, 2'b00 });
 	assign	f_this_req  = (i_pc      == { f_const_addr, 2'b00 });
 	assign	f_this_data = (i_wb_data ==   f_const_insn);
 	assign	f_this_insn = (o_insn    ==   f_const_insn);
+
+	assign	f_this_return = (o_wb_addr - f_outstanding == f_const_addr);
+
+	assign	f_cache_pc   = (next_pc_address ==   f_const_addr)&&cache_valid;
+	assign	f_cache_insn = (cache_word      ==   f_const_insn)&&cache_valid;
 
 
 	//
@@ -552,8 +568,6 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	//
 	// The contract will only work if we assume the return from the
 	// bus at this address will be the right return.
-	wire	f_this_return;
-	assign	f_this_return = (o_wb_addr - f_outstanding == f_const_addr);
 	always @(*)
 	if ((o_wb_cyc)&&(f_this_return))
 	begin
@@ -571,7 +585,7 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	// cache must also match the contract as well.
 	//
 	always @(*)
-	if ((o_pc[AW+1:2] + 1'b1 == f_const_addr)&&(cache_valid))
+	if ((f_next_addr[AW+1:2] == f_const_addr)&&(cache_valid))
 	begin
 		if (!cache_illegal)
 			assert(cache_word == f_const_insn);
@@ -584,13 +598,13 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	if ((f_past_valid)&&(!$past(cache_illegal))&&(!cache_valid))
 		assert(!cache_illegal);
 
-	////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	//
 	// Additional assertions necessary to pass induction
 	//
 	//
-	////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	// We have only a one word cache.  Hence, we shouldn't be asking
 	// for more data any time we have nowhere to put it.
@@ -623,11 +637,12 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	if (o_wb_cyc)
 		assert(inflight == f_outstanding);
 
-	wire	[AW-1:0]	this_return_address,
-				next_pc_address;
 	assign	this_return_address = o_wb_addr - f_outstanding;
-	assign	next_pc_address = o_pc[AW+1:2] + 1'b1;
+	assign	next_pc_address = f_next_addr[AW+1:2];
 
+	//
+	// Address checking
+	//
 	always @(posedge i_clk)
 	if ((f_past_valid)&&($past(o_wb_cyc))
 			&&(!$past(i_reset))
@@ -645,11 +660,23 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 		assert(o_pc[AW+1:2] == this_return_address);
 
 	always @(posedge i_clk)
+	if (o_valid && !o_wb_cyc && !o_illegal)
+	begin
+		if (!cache_valid && !o_illegal)
+			assert(next_pc_address == o_wb_addr);
+
+		if (cache_valid)
+			assert(f_dbl_next[AW+1:2] == o_wb_addr);
+	end
+
+	always @(posedge i_clk)
 	if ((f_past_valid)&&($past(o_wb_cyc))
 			&&(!$past(cache_valid))&&(cache_valid))
 		assert(next_pc_address == $past(this_return_address));
 
 
+	//
+	//
 
 	always @(posedge i_clk)
 	if ((f_past_valid)&&($past(o_wb_cyc))&&(o_wb_cyc))
@@ -667,30 +694,49 @@ module	dblfetch(i_clk, i_reset, i_new_pc, i_clear_cache,
 	always @(*)
 	if (invalid_bus_cycle)
 		assert(!o_wb_cyc);
+
 	always @(*)
 	if (cache_valid)
 		assert(o_valid);
 
-	/////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 	//
 	//
 	// Cover statements
 	//
 	//
-	/////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+	reg	f_cvr_aborted, f_cvr_fourth_ack;
 
 	always @(posedge i_clk)
 	cover((f_past_valid)&&($past(f_nacks)==3)
 		&&($past(i_wb_ack))&&($past(o_wb_cyc)));
 
+	initial	f_cvr_aborted = 0;
+	always @(posedge i_clk)
+	if (i_reset)
+		f_cvr_aborted = 0;
+	else if (!o_wb_cyc && (f_nreqs != f_nacks))
+		f_cvr_aborted <= 1;
 
-	/////////////////////////////////////////////////////
+	initial	f_cvr_fourth_ack = 0;
+	always @(posedge i_clk)
+	if (i_reset)
+		f_cvr_fourth_ack <= 0;
+	else if ((f_nacks == 3)&&(o_wb_cyc && i_wb_ack))
+		f_cvr_fourth_ack <= 1;
+
+	always @(posedge i_clk)
+		cover(!o_wb_cyc && (f_nreqs == f_nacks)
+			&& !f_cvr_aborted && f_cvr_fourth_ack);
+
+	////////////////////////////////////////////////////////////////////////
 	//
 	//
 	// Temporary simplifications
 	//
 	//
-	/////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 
 //	always @(*)
 //		assume((!i_wb_err)&&(!f_const_illegal));
